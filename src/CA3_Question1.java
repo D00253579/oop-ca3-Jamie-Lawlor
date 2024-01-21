@@ -9,10 +9,13 @@ public class CA3_Question1 {
     public static void runSimulation() {
         Stack<Integer> driveway = new Stack<>();
         Stack<Integer> street = new Stack<>();
+        //Getting user input.
         Scanner key = new Scanner(System.in);
-        int choice = 0;
-        int plateNumber = 0;
+        //Declaring variables.
+        int choice;
+        int plateNumber;
         do {
+            //Creating menu and allowing user to choose options.
             System.out.println("0: Exit");
             System.out.println("1: Add a car who rented a space");
             System.out.println("2: Remove a car");
@@ -21,34 +24,39 @@ public class CA3_Question1 {
             switch (choice) {
                 case 1: {
                     System.out.println("Enter the licence plate number of the car");
+                    //Takes the user input and pushes to the driveway stack.
                     plateNumber = key.nextInt();
                     driveway.push(plateNumber);
                     System.out.println("Car added to driveway: \n" + driveway + "\n");
-
                     break;
                 }
                 case 2: {
+                    //Validation for when no cars have been added.
                     if (driveway.isEmpty()) {
                         System.out.println("Driveway is empty\n");
                     } else {
                         System.out.println("Enter the licence plate number of the car to be removed");
                         plateNumber = key.nextInt();
+                        //Validation to avoid EmptyStackException.
                         if (driveway.size() == 1) {
                             driveway.pop();
                             System.out.println("Driveway is empty");
-                        } else if (-driveway.peek()==plateNumber){
+                            //-driveway.peek to ensure that only negative numbers will be read.
+                        } else if (-driveway.peek() == plateNumber) {
                             driveway.pop();
-                        }else {
+                        } else {
+                            //When the car requested is not at the top of the stack.
                             while (-driveway.peek() != plateNumber) {
                                 street.push(driveway.peek());
                                 driveway.pop();
                             }
-                           driveway.pop();
-                                do {
-                                    driveway.push(street.peek());
-                                    street.pop();
+                            driveway.pop();
+                            //Brings cars that had to move to the street back into the driveway.
+                            do {
+                                driveway.push(street.peek());
+                                street.pop();
 
-                                } while (!street.isEmpty());
+                            } while (!street.isEmpty());
                         }
                         System.out.println("Car was removed from driveway: " + driveway + "\n");
                     }
@@ -56,6 +64,7 @@ public class CA3_Question1 {
                     break;
                 }
                 case 3: {
+                    //Allows users to view the current cars in the stack.
                     System.out.println("=====CURRENT CARS IN DRIVEWAY====== \n" + driveway + "\n");
                     break;
                 }
