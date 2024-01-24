@@ -14,23 +14,25 @@ public class CA3_Question3 {
     public static void readFile(String fileName) throws FileNotFoundException {
         File f = new File(fileName);
         Scanner in = new Scanner(f);
-
+        Scanner lineNum=new Scanner(f);
         in.useDelimiter("[^A-Za-z0-9_]+");
         Map<String, Integer> Lines = new HashMap<String, Integer>();
         String aLine = "";
         int count = 0;
-        while (in.hasNext()) {
-            count++;
-            aLine = in.next();
-            Lines.put(aLine, count);
-        }
+
+            while (in.hasNext()) {
+                aLine = in.next();
+                count++;
+                Lines.put(aLine, count);
+            }
+
+
 
         ArrayList<Integer> words = new ArrayList<>();
         for (String key : Lines.keySet()) {
             Integer value = Lines.get(key);
             words.add(value);
-
-            System.out.println(key + " occurs at line " + words);
+            System.out.println(key + " occurs at line " + value);
 
         }
     }
