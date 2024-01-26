@@ -34,11 +34,17 @@ public class CA3_Question5
             if (choice.equalsIgnoreCase("takeoff")){
 
                 do{
+                    //Allows users to input as many flight symbols as they wish
                 System.out.print("Please enter takeoffSymbols of all planes (Type quit to exit): ");
                 planes=towerInput.nextLine();
-                takeOff.add(planes);
-                System.out.println("\n"+planes+ " is ready for takeoff");
+                /*Fixes issue for when the user typed 'quit', it was added to the queue as well as
+                    breaking out of the loop*/
+                if (!planes.equalsIgnoreCase("quit")){
+                    takeOff.add(planes);
+                    System.out.println("\n"+planes+ " is ready for takeoff");
+                    //Displays what's currently in the queue.
                     System.out.println("Current flight queue: "+takeOff+"\n");
+                }
 
                 }while(!planes.equalsIgnoreCase("quit"));
 
@@ -46,39 +52,42 @@ public class CA3_Question5
                 do{
                     System.out.print("Please enter landingSymbols of all planes (Type quit to exit): ");
                     planes=towerInput.nextLine();
-                    landing.add(planes);
-                    System.out.println("\n"+planes+ " is ready for landing");
-                    System.out.println("Current flight queue: "+landing+"\n");
+                    if (!planes.equalsIgnoreCase("quit")) {
+                        landing.add(planes);
+                        System.out.println("\n" + planes + " is ready for landing");
+                        System.out.println("Current flight queue: " + landing + "\n");
+                    }
                 }while(!planes.equalsIgnoreCase("quit"));
 
             }else if (choice.equalsIgnoreCase("next")){
 
                 do {
-                    boolean toggle=false;
+                    //Prioritises landing first
                     if (!landing.isEmpty()) {
                         System.out.println(landing.peek() + " has landed");
                         landing.remove();
                         System.out.println(landing);
-                        toggle=true;
+
                         if (landing.isEmpty()){
                             System.out.println("All planes have landed successfully!");
-                        toggle=true;
+
                         }
                     }
+                    /* Enables the next prioritised flight, if they are none to takeoff
+                    then repeats the landing statement until both queues are empty.
+                     */
                     if (!takeOff.isEmpty()){
                         System.out.println(takeOff.peek() + " has taken off");
                     takeOff.remove();
                     System.out.println(takeOff);
-                        if (landing.isEmpty()){
+                        if (takeOff.isEmpty()){
                             System.out.println("All planes have taken off successfully!");
                         }
                     }
-                    /*Need to make sure landing is prioritised and also that two takeoff's can occur
-                    if there are no landings.
-                    * */
-                }while(!landing.isEmpty() && !takeOff.isEmpty());
+                   
+                }while(!landing.isEmpty() || !takeOff.isEmpty());
             }
-
+        //Exits the program
         }while(!choice.equalsIgnoreCase("quit"));
     }
 }
