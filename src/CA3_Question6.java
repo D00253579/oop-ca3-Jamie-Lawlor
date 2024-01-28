@@ -114,7 +114,7 @@ public class CA3_Question6
                         System.out.println("\nInvalid amount of shares\n");
                     }
                 }else {
-                    //Validiation for if the user tries to sell without having bought any shares.
+                    //Validation for if the user tries to sell without having bought any shares.
                     System.out.println("\nYou have nothing to sell\n");
                 }
             }else if (!command.equalsIgnoreCase("quit")){
