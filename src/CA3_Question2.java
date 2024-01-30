@@ -81,14 +81,14 @@ public class CA3_Question2 {
                 /* Checking surrounding coordinates in North, East, South and West directions
                 and if those locations haven't been filled then push them to the stack and process repeats.
                 */
-                if (y + 1 < 10 && arr[x][y + 1] == 0) {
+                if (x - 1 >= 0 && arr[x - 1][y] == 0) {
+                    coordinates.push(new Pair(x - 1, y));
+                } else if (y + 1 < 10 && arr[x][y + 1] == 0) {
                     coordinates.push(new Pair(x, y + 1));
                 } else if (x + 1 < 10 && arr[x + 1][y] == 0) {
                     coordinates.push(new Pair(x + 1, y));
                 } else if (y - 1 >= 0 && arr[x][y - 1] == 0) {
                     coordinates.push(new Pair(x, y - 1));
-                } else if (x - 1 >= 0 && arr[x - 1][y] == 0) {
-                    coordinates.push(new Pair(x - 1, y));
                 }
             }
 
