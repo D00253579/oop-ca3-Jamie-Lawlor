@@ -19,20 +19,11 @@ public class  CA3_Question8 {
         Stack<String>operators=new Stack<>();
         boolean finish=false;
         while(!finish) {
-//            for (int i=0; i<equation.length(); i++){
-//            if (equation.contains("+")) {
-//                if (equation.charAt(i) == '+'){
-//                    operators.push(equation.substring(i));
-//                }
-//                numbers.push(Integer.parseInt(equation.substring(i)));
-//            }
-//            }
-
             String currentChar;
 
             for (int i = 0; i < equation.length(); i++) {
                 currentChar = String.valueOf(equation.charAt(i));
-                if (currentChar.equals("(") || currentChar.equals("*") || currentChar.equals("/") || currentChar.equals("+") || currentChar.equals("-") || currentChar.equals(")")) {
+                if (currentChar.equals("*") || currentChar.equals("/") || currentChar.equals("+") || currentChar.equals("-") || currentChar.equals("(") ||  currentChar.equals(")")) {
                     operators.push(currentChar);
                 }else{
                     numbers.push(Double.parseDouble(currentChar));
@@ -59,44 +50,12 @@ public class  CA3_Question8 {
                    else{
                        operators.pop();
                     }
-//                    if (!operators.isEmpty() && numbers.size()>1){
-//                        topEvaluation(numbers,operators);
-//                    }
+
                 }
 
 
 
                 }
-
-
-//                }else if (!operators.contains("/") && currentChar.equals("+")){
-//                    topEvaluation(numbers,operators);
-//                    operators.push(currentChar);
-//                }else if(!operators.contains("+") && currentChar.equals("-")) {
-//                topEvaluation(numbers,operators);
-//                    operators.push(currentChar);
-//                }
-//                if (currentChar.equals(")")){
-//                    if (!operators.peek().equals("(")){
-//                        topEvaluation(numbers,operators);
-//                    }
-//                    if (!operators.isEmpty()){
-//                        topEvaluation(numbers,operators);
-//                    }
-//                }
-
-
-//                if (!currentChar.equals("+")){
-//                    numbers.push(Integer.parseInt(currentChar));
-//                }else{
-//                    operators.push(currentChar);
-//                }
-//            if (!numbers.isEmpty()&&!operators.isEmpty()){
-//
-//                operators.pop();
-//
-//
-//            }
 
             finish=true;
         }
@@ -109,29 +68,35 @@ public static void topEvaluation(Stack<Double>numbers, Stack<String>operators) {
         double num2 = numbers.pop();
         String op = operators.pop();
         double result;
-        switch (op) {
-            case "+": {
-                result = num2 + num1;
-                numbers.push(result);
-                break;
+
+            switch (op) {
+                case"(": {
+                    operators.pop();
+                    break;
+                }
+                case "+": {
+                    result = num2 + num1;
+                    numbers.push(result);
+                    break;
+                }
+
+                case "-": {
+                    result = num2 - num1;
+                    numbers.push(result);
+                    break;
+                }
+                case "*": {
+                    result = num2 * num1;
+                    numbers.push(result);
+                    break;
+                }
+                case "/": {
+                    result = num2 / num1;
+                    numbers.push(result);
+                    break;
+                }
             }
 
-            case "-": {
-                result = num2 - num1;
-                numbers.push(result);
-                break;
-            }
-            case "*": {
-                result = num2 * num1;
-                numbers.push(result);
-                break;
-            }
-            case "/": {
-                result = num2 / num1;
-                numbers.push(result);
-                break;
-            }
-        }
 
 
 }
