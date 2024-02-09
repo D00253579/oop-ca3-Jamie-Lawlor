@@ -38,6 +38,7 @@ public class CA3_Question7
         String command;
         //Creating the queue
         Queue<Block>shares=new LinkedList<>();
+        //Creating the companies map
         Map<String, Queue<Block>>companies=new HashMap<>();
         do {
             System.out.println("============STOCK SHARES============");

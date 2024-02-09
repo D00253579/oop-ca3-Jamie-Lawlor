@@ -66,6 +66,7 @@ public class CA3_Question5
                     if (!landing.isEmpty()) {
                         System.out.println(landing.peek() + " has landed");
                         landing.remove();
+                        //Outputting the remaining flights in the queue
                         System.out.println(landing);
 
                         if (landing.isEmpty()){

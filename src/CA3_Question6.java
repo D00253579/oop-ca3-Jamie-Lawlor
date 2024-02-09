@@ -104,7 +104,8 @@ public class CA3_Question6
                                 System.out.println("Invalid amount of shares\n");
                             }
                         }else {
-                            //If the user is selling only one batch
+                            /*If the user is selling only one batch then subtract the total of all units being sold
+                            from the units you currently have and remove from queue*/
                             totalGain = (qty * price) - firstBatchOfShares.getQuantity() * firstBatchOfShares.getPrice();
                             shares.remove();
                             System.out.println("Your total profit is: " + totalGain);
