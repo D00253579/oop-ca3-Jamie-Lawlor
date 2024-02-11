@@ -33,15 +33,6 @@ public class CA3_Question9 {
 
     /*Was unsure how to utilise and running out of time, so I decided to focus more on the logic
     instead of displaying with the array*/
-    public static void display(int[][] image) {
-        //0-7
-        for (int x = 0; x < image.length; x++) {
-            for (int y = 0; y < image.length; y++) {
-                System.out.printf("%4d", image[x][y]);
-            }
-            System.out.println();
-        }
-    }
 
     public static void solve(int x, int y, DIRECTION dir) {
         Stack<Maze> paths = new Stack<>();
@@ -171,8 +162,6 @@ public class CA3_Question9 {
 
     public static void main(String[] args) {
         solve(3, 4, DIRECTION.NORTH);
-        int[][] maze = new int[8][8];
-        display(maze);
     }
 
 }
