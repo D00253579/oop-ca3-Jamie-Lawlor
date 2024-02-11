@@ -1,10 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.TreeSet;
-import java.util.Scanner;
+import java.util.*;
+
 /**
  *  Name:Jamie Lawlor
  *  Class Group: SD2B
@@ -18,13 +15,21 @@ public class CA3_Question10
 
         Scanner input = new Scanner(inputFile);
         String line;
-
+        String city1="";
+        String city2="";
+        int distance=0;
 
         while (input.hasNext()) {
             line = input.nextLine();
-            System.out.println(line);
-
+        String[]str1=line.split(",");
+        city1=str1[0];
+        city2=str1[1];
+        distance=Integer.parseInt(str1[2]);
+            System.out.println(city1);
+            System.out.println(city2);
+            System.out.println(distance+"\n");
         }
+
         Scanner key=new Scanner(System.in);
         String from;
         System.out.println("Starting point: ");
