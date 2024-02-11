@@ -1,10 +1,10 @@
 import java.util.*;
+
 /**
- *  Name: Jamie Lawlor
- *  Class Group: SD2B
+ * Name: Jamie Lawlor
+ * Class Group: SD2B
  */
-public class CA3_Question7
-{
+public class CA3_Question7 {
     //Creating block class to store the quantity and price
     public static class Block {
         int quantity;
@@ -24,6 +24,7 @@ public class CA3_Question7
         }
 
     }
+
     /*
     Will repeatedly ask the user to enter the commands in the format
     buy qty price
@@ -37,40 +38,38 @@ public class CA3_Question7
         Scanner in = new Scanner(System.in);
         String command;
         //Creating the queue
-        Queue<Block>shares=new LinkedList<>();
+        Queue<Block> shares = new LinkedList<>();
         //Creating the companies map
-        Map<String, Queue<Block>>companies=new HashMap<>();
+        Map<String, Queue<Block>> companies = new HashMap<>();
         do {
             System.out.println("============STOCK SHARES============");
             System.out.println("Buy");
             System.out.println("Sell");
             System.out.println("Quit");
             command = in.next();
-            if(command.equalsIgnoreCase("buy"))
-            {
+            if (command.equalsIgnoreCase("buy")) {
                 System.out.println("Which company would you like to access?: ");
-                String company=in.next();
+                String company = in.next();
                 System.out.println("How many shares do you wish to buy: ");
                 int qty = in.nextInt();
                 System.out.println("At what price are they being bought at: ");
                 double price = in.nextDouble();
                 //Takes in user input and adds a new instance of the class using the user input to the queue.
-                Block sharesBought=new Block(qty,price);
+                Block sharesBought = new Block(qty, price);
                 //In this case shares queue will store all shares the user has in the queue
                 shares.add(sharesBought);
                 //Creating another queue to ensure the queues are individual and don't override each other
-                Queue<Block>companyShares=new LinkedList<>();
+                Queue<Block> companyShares = new LinkedList<>();
                 companyShares.add(sharesBought);
                 //Adds the userInput and the company queue to the map
-                companies.put(company,companyShares);
+                companies.put(company, companyShares);
                 System.out.println("Shares purchased successfully");
-            }
-            else if(command.equals("sell")) {
+            } else if (command.equals("sell")) {
                 System.out.println("Which company would you like to access?: ");
                 String company = in.next();
 
                 //Validation if user tries to sell stock more than once
-                if (companies.get(company)!=null){
+                if (companies.get(company) != null) {
                     //Gets which queue the user wants based on the key the user inputted
                     Block firstBatchOfShares = companies.get(company).peek();
                     System.out.println(" Quantity: " + firstBatchOfShares.getQuantity() + " Price: " + firstBatchOfShares.getPrice());
@@ -133,14 +132,14 @@ public class CA3_Question7
                         //Validation for if the user tries to sell without having bought any shares.
                         System.out.println("\nYou have nothing to sell\n");
                     }
-                }else{
+                } else {
                     System.out.println("\nYou have nothing to sell\n");
                 }
-            }else if (!command.equalsIgnoreCase("quit")){
+            } else if (!command.equalsIgnoreCase("quit")) {
                 //Validation for correct input
                 System.out.println("\nINVALID STATEMENT\n");
             }
             //Exits the program.
-        }while(!command.equalsIgnoreCase("quit"));
+        } while (!command.equalsIgnoreCase("quit"));
     }
 }

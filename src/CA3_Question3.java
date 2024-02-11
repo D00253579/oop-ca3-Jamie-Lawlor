@@ -22,23 +22,20 @@ public class CA3_Question3 {
         int count = 0;
 /*Taking in user input and using a count to count how many lines, it ended up counting each occurrence of the
    words and I couldn't figure out how to get it to read in each line*/
-            while (in.hasNext()) {
-                aLine = in.next();
-                count++;
-                Lines.put(aLine, count);
-            }
+        while (in.hasNext()) {
+            aLine = in.next();
+            count++;
+            Lines.put(aLine, count);
+        }
 
 
-        //Creating arrayList to store the occurrence of the words
-        ArrayList<Integer> words = new ArrayList<>();
-            //Going through each word in the file
+        //Going through each word in the file
         for (String key : Lines.keySet()) {
             /*Storing the "count" that was stored in the Lines map into the value variable
             We can identify each word using the Lines.get(key)
             */
             Integer value = Lines.get(key);
             //Adding to the arrayList
-            words.add(value);
             System.out.println(key + " occurs at line " + value);
 
         }
